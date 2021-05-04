@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 12:08:47 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/29 15:30:01 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/03 14:15:53 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	execute_operations(t_stack *a, t_stack *b, t_operation *operation)
 	}
 	if (!stack_is_empty(b))
 		printf("KO\n");
-	if (stack_is_sorted(a))
+	else if (stack_is_sorted(a))
 		printf("OK\n");
 	else
 		printf("KO\n");
@@ -73,17 +73,17 @@ int			main(int argc, char *argv[])
 	stack_a = initalize_stack();
 	stack_b = initalize_stack();
 	if (stack_a == NULL || stack_b == NULL)
-		ft_error("Failed allocation for the stacks", stack_a, stack_b);
+		ft_error("Failed allocation for the stacks", stack_a, stack_b, NULL);
 	if (argc < 2)
 		ft_quit(stack_a, stack_b);
 	str = fill_stack(argc, argv, stack_a, &len_stack);
-	if (str != NULL)
-		ft_error(str, stack_a, stack_b);
+	if (str != NULL || ((str = check_duplicates_ck(stack_a)) != NULL))
+		ft_error(str, stack_a, stack_b, NULL);
 	str = parse_stdin(&operation);
 	if (str != NULL)
 	{
 		free_operations(operation);
-		ft_error(str, stack_a, stack_b);
+		ft_error(str, stack_a, stack_b, NULL);
 	}
 	return (execute_operations(stack_a, stack_b, operation));
 }

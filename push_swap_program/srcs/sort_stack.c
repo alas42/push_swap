@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 11:32:36 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/29 15:46:56 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/04 16:50:53 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	sort_stack(t_helper *helper, t_operation **op)
 	nb = 1;
 	if (helper->len_stack == 1)
 		return ;
+	if (stack_is_sorted_tab(helper, 0))
+		return ;
 	else if (helper->len_stack == 2)
 		sort_two(helper, op, 0);
 	else if (helper->len_stack == 3)
@@ -109,7 +111,7 @@ void	sort_stack(t_helper *helper, t_operation **op)
 		if (helper->len_stack < 100)
 			nb = helper->len_stack / 2;
 		if (helper->len_stack >= 100)
-			nb = helper->len_stack / 6;
+			nb = helper->len_stack / 7;
 		if (helper->len_stack >= 400)
 			nb = helper->len_stack / 11;
 		sort_many(helper, op, nb);

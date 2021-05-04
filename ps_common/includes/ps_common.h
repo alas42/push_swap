@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 17:45:02 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/26 17:45:42 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/03 14:02:47 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,22 @@ typedef struct			s_operation
 	struct s_operation	*next;
 }						t_operation;
 
+typedef struct			s_helper
+{
+	int					len_stack;
+	int					*tab;
+	int					end_stack1;
+	int					end_stack2;
+	int					blocks;
+}						t_helper;
+
 int						stack_len(t_stack *stack);
-void					print_stack(t_stack *stack);
-int						operation_len(t_operation *operation);
 void					print_operation(t_operation *operation);
 void					loop_print_operation(t_operation *operation);
-void					print_tab(int *tab);
 void					free_operations(t_operation *operation);
 void					free_stacks(t_stack *stack_a, t_stack *stack_b);
-void					ft_error(char *s, t_stack *stack_a, t_stack *stack_b);
+void					free_onestring(char **args);
+void					ft_error(char *s, t_stack *a, t_stack *b, t_helper *h);
 void					ft_quit(t_stack *stack_a, t_stack *stack_b);
 int						stack_is_sorted(t_stack *stack);
 int						stack_is_empty(t_stack *stack);
@@ -61,5 +68,6 @@ void					rotate_stack(t_stack *stack);
 void					rotate_all(t_stack *stack_a, t_stack *stack_b);
 void					reverse_rotate_stack(t_stack *stack);
 void					reverse_rotate_all(t_stack *stack_a, t_stack *stack_b);
-
+int						ft_check_integer(char *s, int neg);
+char					*check_duplicates(t_stack *stack, t_helper *helper);
 #endif

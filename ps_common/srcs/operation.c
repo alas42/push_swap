@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 16:33:23 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/26 17:48:05 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/03 14:01:45 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,6 @@ static void	print_operations(t_operation *tmp)
 		printf("rrb\n");
 	else
 		printf("rrr\n");
-}
-
-int			operation_len(t_operation *operation)
-{
-	t_operation	*tmp;
-	int			len;
-
-	len = 0;
-	tmp = operation;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		len++;
-	}
-	return (len);
 }
 
 void		loop_print_operation(t_operation *operation)

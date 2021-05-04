@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 18:06:36 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/26 17:48:22 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/03 12:23:24 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,17 @@ void		free_operations(t_operation *operation)
 		free(ptr);
 	}
 	operation = NULL;
+}
+
+void		free_onestring(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i] != NULL)
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }

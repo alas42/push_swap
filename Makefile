@@ -6,7 +6,7 @@
 #    By: avogt <avogt@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 15:12:40 by avogt             #+#    #+#              #
-#    Updated: 2021/04/26 18:29:14 by avogt            ###   ########.fr        #
+#    Updated: 2021/05/03 16:57:23 by avogt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ COMMON_FILES = error.c \
 				operation.c
 				
 CHECKER_FILES = checker_main.c \
-				parse_operations.c
+				parse_operations.c \
+				check_duplicates_ck.c
 				
 PUSH_SWAP_FILES = push_swap_main.c \
 				helper.c \
@@ -33,7 +34,7 @@ PUSH_SWAP_FILES = push_swap_main.c \
 				sort_stack.c \
 				sort.c \
 				sort_many.c \
-				check_duplicates.c
+				check_duplicates_ps.c
 
 FOLDER_CHECKER = checker_program
 FOLDER_PUSH_SWAP = push_swap_program
@@ -48,7 +49,7 @@ OBJS_PUSH_SWAP = $(SOURCES_PUSH_SWAP:.c=.o)
 OBJS_CHECKER = $(SOURCES_CHECKER:.c=.o)
 OBJS_COMMON = $(SOURCES_COMMON:.c=.o)
 
-CC = gcc
+CC = gcc $(CFLAGS)
 CFLAGS = -Wall -Werror -Wextra
 MLFT = libft_mini
 LIBMLFT = $(addprefix $(MLFT)/,libftmini.a)
@@ -64,7 +65,7 @@ $(CHECKER_NAME): $(OBJS_COMMON) $(OBJS_CHECKER)
 	@$(CC) $(SOURCES_CHECKER) $(SOURCES_COMMON) $(LIBMLFT) -o $(CHECKER_NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) -o $@ -c $<
 
 clean:
 	@make -s -C $(MLFT) clean

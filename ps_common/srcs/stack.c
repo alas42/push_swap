@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 13:32:00 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/30 10:50:26 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/03 13:42:11 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,28 @@ void	add_to_stack(t_stack *stack, int n)
 		tmp->next = new;
 	}
 }
-/*
-char	*check_integer(char *s)
-{
-	
-}
-*/
+
 char	*fill_stack_string(char *argv[], t_stack *stack, int *len_stack)
 {
 	char	**args;
 	int		i;
-	int		n;
 
 	i = 0;
-	n = 0;
 	args = ft_split(argv[1], ' ');
-	if (args == NULL)
-		return ("Failed to malloced the tab from argv[1]");
+	if (args == NULL || args[i] == NULL)
+		return ("NO");
 	while (args[i] != NULL)
 	{
 		if (!is_a_num(args[i]))
+		{
+			free_onestring(args);
 			return ("an argument is not an int");
-		n = ft_atoi(args[i]);
-		if (!(n <= INT_MAX && n >= INT_MIN))
-			printf("%d\n", n);
-		add_to_stack(stack, n);
+		}
+		add_to_stack(stack, ft_atoi(args[i]));
 		i++;
 		*len_stack = *len_stack + 1;
 	}
+	free_onestring(args);
 	return (NULL);
 }
 
@@ -77,8 +71,6 @@ char	*fill_stack(int argc, char *argv[], t_stack *stack, int *len_stack)
 		if (!is_a_num(argv[i]))
 			return ("an argument is not an int");
 		n = ft_atoi(argv[i]);
-		if (!(n <= INT_MAX && n >= INT_MIN))
-			printf("%d\n", n);
 		add_to_stack(stack, n);
 		*len_stack = *len_stack + 1;
 		i++;

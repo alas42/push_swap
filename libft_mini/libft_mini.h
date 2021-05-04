@@ -6,7 +6,7 @@
 /*   By: avogt <avogt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 14:21:58 by avogt             #+#    #+#             */
-/*   Updated: 2021/04/26 19:21:53 by avogt            ###   ########.fr       */
+/*   Updated: 2021/05/02 15:28:58 by avogt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strdup(const char *s1);
 char			*ft_strchr(const char *s, int c);
-char			**ft_split(char const *s, char c);
+char			**ft_split(char *s, char c);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_strdel(char **as);
